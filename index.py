@@ -25,37 +25,28 @@ for k in range(len(deltas) - 1):
 firstItem = [item[0] for item in deltas]
 firstItem.insert(0, coord[0][1])
 
-print("deltas:", deltas)
-print(firstItem)
-
 factors = []
 
 for i in range(len(coord) - 1):
   factors.append('(x - {})'.format(coord[i][0]))
-
-print(factors)
 
 newFactors = []
 
 for i in range(len(factors)):
   newFactors.append(factors[:i + 1])
 
-print(newFactors)
-
 newFactConc = ['*'.join(sub_list) for sub_list in newFactors]
-
-print(newFactConc)
 
 finalFactors = []
 
 for i in range(1, len(newFactConc) + 1):
   finalFactors.append('{}*{}'.format(newFactConc[i - 1], firstItem[i]))
 
-print(finalFactors)
-
 parseResult = "{}+".format(coord[0][1]) + '+'.join(finalFactors)
 
 result = sympify(parseResult, locals=_clash1)
+
+print(expand(result))
 
 x_coord = [] # Armazena a posição de x para cada sublista de coord
 y_coord = [] # Armazena a posição de y para cada sublista de coord
