@@ -41,3 +41,7 @@ for i in range(1, len(newFactConc) + 1):
   finalFactors.append('{}*{}'.format(newFactConc[i - 1], firstItem[i]))
 
 print(finalFactors)
+
+
+result = "{}+".format(coord[0][1]) + '+'.join(finalFactors)
+print(expand(result))
